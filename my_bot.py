@@ -9,9 +9,11 @@ from telegram.ext import Updater
 from datetime import datetime
 import pandas_datareader as web
 import dateparser
-from binance.client import client
+from binance.client import Client
+#import keys
 
-token = open("telegramTOKEN","r").readline().strip()
+token = open("keys.py","r").readline().strip()
+# koken = keys
 updater = Updater(token=token, use_context=True)
 
 dispatcher = updater.dispatcher

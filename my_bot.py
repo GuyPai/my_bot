@@ -1,5 +1,5 @@
 """
-1
+
 this script runs a bot on telegram
 
 for this script to run please install the next modules:

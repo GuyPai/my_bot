@@ -1,6 +1,6 @@
 """
 
-this script runs a bot on telegram
+This script runs a bot on telegram
 
 for this script to run please install the next modules:
     sudp pip3 install dateparser pandas-datareader python-telegram-bot telegram python-binance

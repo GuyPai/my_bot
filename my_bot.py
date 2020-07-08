@@ -37,7 +37,7 @@ def get_FB(update, context):
     results = "High = " + FB.High.to_string().split()[2] + " - " \
        "Low = " + FB.Low.to_string().split()[2] + " - \n " \
        "Open = " + FB.Open.to_string().split()[2] + " - \n " \
-       "Close = " + FB.Close.to_string().split()[2] + " - " \
+       "Close = " + FB.Close.to_string().split()[2] + " - \n"\
        "Volume = " + FB.Volume.to_string().split()[2]
 
     context.bot.send_message(chat_id=update.effective_chat.id, text=results)

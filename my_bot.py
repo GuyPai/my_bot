@@ -29,7 +29,7 @@ def start(update, context):
 
 def get_FB(update, context):
 
-    start = dateparser.parse("yesterday")
+    start = dateparser.parse("1 hour ago")
     end = dateparser.parse("today")
 
     FB = web.DataReader('fb', 'yahoo', start, end)
@@ -43,12 +43,18 @@ def get_FB(update, context):
 
     context.bot.send_message(chat_id=update.effective_chat.id, text=results)
 
+def sayhi(bot, job):
+    job.context.message.reply_text("hi")
+
+def time(bot, update,job_queue):
+    job = job_queue.run_repeating(sayhi, 5, context=update)
+
 from telegram.ext import CommandHandler
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
 FB_hendler = CommandHandler("FB", get_FB)
 dispatcher.add_handler(FB_hendler)
-
+dispatcher.add_handler(MessageHandler(Filters.text , time,pass_job_queue=True))
 
 updater.start_polling()

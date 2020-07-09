@@ -46,8 +46,7 @@ def get_FB(update, context):
 def sayhi(bot, job):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Hi")
 
-def time(bot, update,job_queue):
-    job_queue.run_repeating(sayhi, 1, context=update)
+job_queue.run_repeating(sayhi, 1, context=update)
 
 from telegram.ext import CommandHandler
 start_handler = CommandHandler('start', start)
@@ -56,7 +55,5 @@ dispatcher.add_handler(start_handler)
 FB_hendler = CommandHandler("FB", get_FB)
 dispatcher.add_handler(FB_hendler)
 
-time_hendeler = MessageHandler(Filters.text, time, pass_job_queue=True)
-dispatcher.add_handler(time_hendeler)
 
 updater.start_polling()

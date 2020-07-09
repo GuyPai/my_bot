@@ -24,7 +24,7 @@ import logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 
-def start(update, context, job_queue):
+def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")                     
 #    job_queue.run_repeating(sayhi, 1, context=update)
 

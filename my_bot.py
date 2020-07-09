@@ -55,6 +55,8 @@ dispatcher.add_handler(start_handler)
 
 FB_hendler = CommandHandler("FB", get_FB)
 dispatcher.add_handler(FB_hendler)
-dispatcher.add_handler(MessageHandler(Filters.text , time,pass_job_queue=True))
+
+time_hendeler = MessageHandler(Filters.text, time, pass_job_queue=True)
+dispatcher.add_handler(time_hendeler)
 
 updater.start_polling()

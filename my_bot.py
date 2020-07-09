@@ -8,7 +8,7 @@ For this script to run please install the next modules:
 """
 
 from telegram.ext import Updater, MessageHandler, Filters
-from datetime import datetime
+from datetime import datetime, timedelta
 import pandas_datareader as web
 import dateparser
 from binance.client import Client
@@ -26,16 +26,16 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 def start(update, context, job_queue):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")                     
-    job_queue.run_repeating(sayhi, 1, context=update)
+#    job_queue.run_repeating(sayhi, 1, context=update)
 
 def get_FB(update, context):
 
-    start = dateparser.parse("1 hour ago")
-    end = dateparser.parse("today")
+    start = datetime.now() - timedelta(hours = 1)
+    end = datetime.now() 
 
     FB = web.DataReader('fb', 'yahoo', start, end)
 
-    results = "FB state from " + str(start) + " to " + str(end) + ":\n" \
+    results = "FB state from " + str(start.strftime('%Y-%m-%d %H:%M:%S')) + " to " + str(end.strftime('%Y-%m-%d %H:%M:%S')) + ":\n" \
        "High = " + FB.High.to_string().split()[2] + "\n" \
        "Low = " + FB.Low.to_string().split()[2] + "\n" \
        "Open = " + FB.Open.to_string().split()[2] + "\n" \
@@ -44,7 +44,7 @@ def get_FB(update, context):
 
     context.bot.send_message(chat_id=update.effective_chat.id, text=results)
 
-def sayhi(bot, job):
+def sayhi(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Hi")
 
 

@@ -6,6 +6,6 @@ RUN pip3 install pandas-datareader
 RUN pip3 install dateparser
 
 COPY my_bot.py .
-COPY keys.py .
+COPY ../keys.py .
 
 CMD ["python", "my_bot.py"]

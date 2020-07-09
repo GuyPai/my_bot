@@ -34,10 +34,11 @@ def get_FB(update, context):
 
     FB = web.DataReader('fb', 'yahoo', start, end)
 
-    results = "High = " + FB.High.to_string().split()[2] + " - \n" \
-       "Low = " + FB.Low.to_string().split()[2] + " - \n " \
-       "Open = " + FB.Open.to_string().split()[2] + " - \n " \
-       "Close = " + FB.Close.to_string().split()[2] + " - \n"\
+    results = "FB state from " + start " to " end ":\n"
+       "High = " + FB.High.to_string().split()[2] + "\n" \
+       "Low = " + FB.Low.to_string().split()[2] + "\n" \
+       "Open = " + FB.Open.to_string().split()[2] + "\n" \
+       "Close = " + FB.Close.to_string().split()[2] + "\n"\
        "Volume = " + FB.Volume.to_string().split()[2]
 
     context.bot.send_message(chat_id=update.effective_chat.id, text=results)

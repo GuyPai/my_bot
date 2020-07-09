@@ -7,7 +7,7 @@ For this script to run please install the next modules:
 
 """
 
-from telegram.ext import Updater
+from telegram.ext import Updater, MessageHandler, Filters
 from datetime import datetime
 import pandas_datareader as web
 import dateparser

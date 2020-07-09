@@ -44,10 +44,10 @@ def get_FB(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=results)
 
 def sayhi(bot, job):
-    job.context.message.reply_text("hi")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Hi")
 
 def time(bot, update,job_queue):
-    job = job_queue.run_repeating(sayhi, 5, context=update)
+    job_queue.run_repeating(sayhi, 1, context=update)
 
 from telegram.ext import CommandHandler
 start_handler = CommandHandler('start', start)

@@ -24,8 +24,9 @@ import logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 
-def start(update, context):
+def start(update, context, job_queue):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")                     
+    job_queue.run_repeating(sayhi, 1, context=update)
 
 def get_FB(update, context):
 
@@ -46,10 +47,9 @@ def get_FB(update, context):
 def sayhi(bot, job):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Hi")
 
-job_queue.run_repeating(sayhi, 1, context=update)
 
 from telegram.ext import CommandHandler
-start_handler = CommandHandler('start', start)
+start_handler = CommandHandler('start', start, pass_job_queue=True)
 dispatcher.add_handler(start_handler)
 
 FB_hendler = CommandHandler("FB", get_FB)

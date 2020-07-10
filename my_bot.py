@@ -35,7 +35,7 @@ def get_FB(update, context):
 
     FB = web.DataReader('fb', 'yahoo', start, end)
 
-    results = "FB state from " + str(start) + " to " + str(end) + ":\n" \
+    results = "FB state from " + start.strftime("%H:%M:%S") + " to " + end.strftime("%H:%M:%S") + ":\n" \
        "High = " + FB.High.to_string().split()[2] + "\n" \
        "Low = " + FB.Low.to_string().split()[2] + "\n" \
        "Open = " + FB.Open.to_string().split()[2] + "\n" \

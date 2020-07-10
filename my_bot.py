@@ -30,7 +30,7 @@ def start(update, context):
 
 def get_FB(update, context):
 
-    start = datetime.now() - timedelta(hours = 1)
+    start = datetime.now() - timedelta(hours = 12)
     end = datetime.now() 
 
     FB = web.DataReader('fb', 'yahoo', start, end)

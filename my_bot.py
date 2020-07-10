@@ -50,7 +50,7 @@ def sayhi(update, context):
 
 
 from telegram.ext import CommandHandler
-start_handler = CommandHandler('start', start, pass_job_queue=True)
+start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
 FB_hendler = CommandHandler("FB", get_FB)
